@@ -18,6 +18,3 @@ dump
 build/
 
 .eslintcache
-Dockerfile
-docker-start.sh
-docker-compose.yml
