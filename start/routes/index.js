@@ -9,3 +9,5 @@ require('./sales_route')
 require('./images_route')
 
 require('./videos_route')
+
+require('./payment_route')

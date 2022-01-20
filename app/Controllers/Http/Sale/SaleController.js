@@ -2,6 +2,7 @@
 
 const moment = require('moment')
 const { USER_ROLE } = require('../../../Settings/user_const')
+const Payments = require('./Payment')
 
 const Sale = use('App/Models/Sale')
 
@@ -79,6 +80,19 @@ class SaleController {
         })
 
     }
+
+    async store({ auth, params, response }) {
+       
+        const payment = await new Payments().store(user, professional, course);
+
+        if (payment.status === 201) {
+          return payment.payment;
+        } else {
+          return response.status(payment.status).send({
+            message: [payment.error],
+          });
+        }
+      }
 
 }
 

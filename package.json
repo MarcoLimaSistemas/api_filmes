@@ -30,7 +30,8 @@
     "aws-sdk": "^2.968.0",
     "mysql": "^2.18.1",
     "url-parse": "^1.5.1",
-    "pg": "^8.0.2"
+    "pg": "^8.0.2",
+    "axios": "^0.21.1"
   },
   "devDependencies": {},
   "autoload": {
