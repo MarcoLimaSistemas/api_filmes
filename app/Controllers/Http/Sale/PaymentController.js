@@ -10,32 +10,6 @@ const { createPayment } = require("../../../Services/payment");
 const Env = use("Env");
 class PaymentController {
 
-
-  async logs({ request, response }) {
-    console.log("novo pagamento", JSON.stringify(request.post()));
-    const token = await getToken();
-    const data = request.post();
-    let payment;
-    for (const charge of data.data) {
-      const junoPayment = await getBillingJuno(
-        token,
-        charge.attributes.charge.id,
-      );
-
-      payment = await Payment.findByOrFail("juno_id", junoPayment.id);
-      const student = await Student.find(payment.student_id);
-      const user = await student.user().fetch();
-      if (junoPayment.status === "PAID") {
-
-      }
-
-      payment.status = junoPayment.status;
-      await payment.save();
-    }
-    return response.status(200).send({
-      message: "ok",
-    });
-  }
   async store({ request, response }) {
     const { references, amount, user } = request.post()
     const dueDate = moment().add(3, "days").format("YYYY-MM-DD");
